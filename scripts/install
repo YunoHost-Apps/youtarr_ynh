@@ -30,8 +30,8 @@ chmod +x "$install_dir/bin/yt-dlp"
 ynh_script_progression "Installing Apprise..."
 
 python3 -m venv "$install_dir/venv"
-ynh_exec_warn_less "$install_dir/venv/bin/pip" install --quiet --upgrade pip
-ynh_exec_warn_less "$install_dir/venv/bin/pip" install --quiet apprise
+ynh_hide_warnings "$install_dir/venv/bin/pip" install --quiet --upgrade pip
+ynh_hide_warnings "$install_dir/venv/bin/pip" install --quiet apprise
 
 cat > "$install_dir/bin/apprise" <<EOF
 #!/bin/sh
@@ -45,11 +45,11 @@ chmod +x "$install_dir/bin/apprise"
 ynh_script_progression "Building Youtarr... This may take a while"
 
 pushd "$install_dir"
-    ynh_hide_warnings ynh_exec_as_app npm ci --omit=dev
+    ynh_hide_warnings ynh_exec_as_app npm ci --omit=dev --ignore-scripts
 popd
 
 pushd "$install_dir/client"
-    ynh_hide_warnings ynh_exec_as_app npm ci
+    ynh_hide_warnings ynh_exec_as_app npm ci --ignore-scripts
     ynh_hide_warnings ynh_exec_as_app npm run build
     ynh_safe_rm node_modules
 popd
