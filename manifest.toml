@@ -58,7 +58,7 @@ ram.runtime = "512M"
 
     [resources.sources.main]
     url = "https://github.com/DialmasterOrg/Youtarr/archive/refs/tags/v1.72.1.tar.gz"
-    sha256 = "e2c12f70047b865a9aece0c0002cda24e32f4b2d751d42735b92cfa5e66c3d9e"
+    sha256 = "5c51267135c01f2e13ce4cc5a81e28ddca0ef7da879068f2b960725f589be4f7"
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.yt-dlp]
