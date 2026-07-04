@@ -36,9 +36,9 @@ ram.runtime = "512M"
     [install.domain]
     type = "domain"
 
-    [install.path]
-    type = "path"
-    default = "/"
+    # No "path" question: Youtarr's client build references its static assets
+    # with absolute root paths, so it only works installed at the root of a
+    # (sub)domain. Omitting this question forces path="/" with no user choice.
 
     [install.init_main_permission]
     type = "group"
