@@ -1,0 +1,29 @@
+--- a/server/modules/videoDownloadPostProcessFiles.js
++++ b/server/modules/videoDownloadPostProcessFiles.js
+@@ -9,7 +9,7 @@
+ const YtdlpCommandBuilder = require('./download/ytdlpCommandBuilder');
+ const { JobVideoDownload } = require('../models');
+ const logger = require('../logger');
+-const { buildChannelPath, cleanupEmptyParents, moveWithRetries, ensureDirWithRetries } = require('./filesystem');
++const { buildChannelPath, cleanupEmptyParents, moveWithRetries, ensureDirWithRetries, copySyncWithFallback } = require('./filesystem');
+ 
+ const activeJobId = process.env.YOUTARR_JOB_ID;
+ 
+@@ -115,7 +115,7 @@
+       );
+ 
+       if (fs.existsSync(channelThumbPath)) {
+-        fs.copySync(channelThumbPath, channelPosterPath);
++        copySyncWithFallback(channelThumbPath, channelPosterPath);
+         logger.info({ channelFolderPath }, 'Channel poster.jpg created');
+       }
+     }
+@@ -486,7 +486,7 @@
+         newImagePath,
+         `videothumb-${id}-small.jpg`
+       ); // define the new path for image thumbnail
+-      fs.copySync(imagePath, newImageFullPath, { overwrite: true }); // copy the image thumbnail
++      copySyncWithFallback(imagePath, newImageFullPath, { overwrite: true }); // copy the image thumbnail
+ 
+       // Resize the image using ffmpeg with proper settings to avoid deprecated format warnings
+       // Using -loglevel error to suppress the deprecated pixel format warnings but still show actual errors

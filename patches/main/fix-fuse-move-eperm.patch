@@ -4,7 +4,7 @@
  
  const fs = require('fs-extra');
  const fsPromises = require('fs').promises;
-+const { execFile } = require('child_process');
++const { execFile, execFileSync } = require('child_process');
 +const { promisify } = require('util');
 +const execFileAsync = promisify(execFile);
  const logger = require('../../logger');
@@ -57,3 +57,42 @@
        if (attempt === retries) {
          throw err;
        }
+@@ -63,6 +99,30 @@
+ }
+ 
+ /**
++ * Synchronous copy with the same EPERM/copy_file_range fallback as
++ * moveWithRetries, for call sites that use fs.copySync directly.
++ *
++ * @param {string} src - Source path
++ * @param {string} dest - Destination path
++ * @param {Object} options - Options
++ * @param {boolean} options.overwrite - Whether to overwrite existing (default: true)
++ */
++function copySyncWithFallback(src, dest, { overwrite = true } = {}) {
++  try {
++    fs.copySync(src, dest, { overwrite });
++  } catch (err) {
++    if (err && err.code === 'EPERM' && err.syscall === 'copyfile') {
++      if (overwrite) {
++        fs.removeSync(dest);
++      }
++      execFileSync('cp', ['-r', '--', src, dest]);
++      return;
++    }
++    throw err;
++  }
++}
++
++/**
+  * Copy a file with optional overwrite protection
+  *
+  * @param {string} src - Source file path
+@@ -205,6 +265,7 @@
+   moveWithRetries,
+   safeRemove,
+   safeCopy,
++  copySyncWithFallback,
+   pathExists,
+   safeStat,
+   setTimestamp,
