@@ -10,7 +10,7 @@
  const logger = require('../../logger');
  
  /**
-@@ -17,6 +20,26 @@
+@@ -17,6 +20,29 @@
  }
  
  /**
@@ -29,7 +29,10 @@
 +  if (overwrite) {
 +    await fs.remove(dest);
 +  }
-+  await execFileAsync('cp', ['-a', '--', src, dest]);
++  // Plain recursive copy, no -a/--preserve: some FUSE mounts (e.g. rclone)
++  // reject utimes()/chown() on the destination with EPERM even though the
++  // actual data copy is allowed.
++  await execFileAsync('cp', ['-r', '--', src, dest]);
 +  await fs.remove(src);
 +}
 +
@@ -37,17 +40,18 @@
   * Move a file or directory with exponential backoff retries
   * Handles transient filesystem errors that can occur during cross-device moves
   *
-@@ -35,6 +58,15 @@
+@@ -35,6 +61,16 @@
        await fs.move(src, dest, { overwrite });
        return;
      } catch (err) {
 +      if (err && err.code === 'EPERM' && err.syscall === 'copyfile') {
 +        try {
 +          await moveViaCpFallback(src, dest, overwrite);
-+          logger.debug({ src, dest }, 'Move succeeded via cp fallback after EPERM from fs.move');
++          logger.warn({ src, dest }, 'Move succeeded via cp fallback after EPERM from fs.move');
 +          return;
 +        } catch (fallbackErr) {
-+          logger.debug({ src, dest, fallbackErr }, 'cp fallback for cross-device move also failed');
++          logger.warn({ src, dest, fallbackErr }, 'cp fallback for cross-device move also failed');
++          throw fallbackErr;
 +        }
 +      }
        if (attempt === retries) {
