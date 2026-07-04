@@ -20,7 +20,7 @@ Automatically download and organize YouTube channels and playlists for Plex, Jel
 
 
 ## Screenshots
-![Screenshot of Youtarr](./doc/screenshots/example.jpg)
+![Screenshot of Youtarr](./doc/screenshots/youtarr.png)
 
 ## 📦 Developer info
 
