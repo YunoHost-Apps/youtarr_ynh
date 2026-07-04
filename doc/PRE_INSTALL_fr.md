@@ -1,1 +1,1 @@
-Ceci est un faux disclaimer à présenter avant l'installation
+Assurez-vous d'avoir assez d'espace disque libre pour les vidéos téléchargées : choisissez un emplacement de stockage avec suffisamment de place, ou laissez le répertoire de données par défaut de l'app si vous prévoyez peu de téléchargements.

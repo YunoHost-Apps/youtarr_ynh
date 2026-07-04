@@ -1,1 +1,1 @@
-Ceci est une fausse description des fonctionalités de l'app
+Youtarr télécharge automatiquement les vidéos de vos chaînes et playlists YouTube abonnées via yt-dlp, et les organise (métadonnées, affiches, fichiers NFO) pour Plex, Jellyfin, Emby et Kodi. Il dispose de sa propre interface web et de son propre système de connexion, fonctionne seul sans serveur multimédia, et prend en charge les téléchargements planifiés, SponsorBlock et des réglages de qualité/organisation par chaîne.

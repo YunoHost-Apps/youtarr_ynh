@@ -1,1 +1,1 @@
-This is a dummy disclaimer to display prior to the install
+Make sure you have enough free disk space for downloaded videos: choose a storage path with plenty of room when the install asks for one, or leave the default (the app's data directory) if you plan to keep downloads small.

@@ -1,1 +1,1 @@
-This is a dummy description of this app features
+Youtarr automatically downloads videos from your subscribed YouTube channels and playlists using yt-dlp, and organizes them (with metadata, posters and NFO files) for Plex, Jellyfin, Emby and Kodi. It has its own web UI and login system, works standalone without any media server, and supports scheduled downloads, SponsorBlock, and per-channel quality/organization settings.
