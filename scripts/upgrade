@@ -35,6 +35,14 @@ ynh_setup_source --source_id="yt-dlp" --dest_dir="$install_dir/bin"
 chmod +x "$install_dir/bin/yt-dlp"
 
 #=================================================
+# UPDATE DENO (JS RUNTIME FOR YT-DLP)
+#=================================================
+ynh_script_progression "Updating Deno..."
+
+ynh_setup_source --source_id="deno" --dest_dir="$install_dir/bin"
+chmod +x "$install_dir/bin/deno"
+
+#=================================================
 # UPDATE APPRISE
 #=================================================
 ynh_script_progression "Updating Apprise..."

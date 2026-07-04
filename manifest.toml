@@ -74,6 +74,19 @@ ram.runtime = "512M"
     autoupdate.asset.amd64 = "yt-dlp_linux"
     autoupdate.asset.arm64 = "yt-dlp_linux_aarch64"
 
+    [resources.sources.deno]
+    # yt-dlp needs a JS runtime on PATH to solve YouTube's "n" challenge,
+    # otherwise most video formats silently disappear (only images left).
+    amd64.url = "https://github.com/denoland/deno/releases/download/v2.9.1/deno-x86_64-unknown-linux-gnu.zip"
+    amd64.sha256 = "710c54d63477d1100844ef4818f19507ce0dbf40510903b1d883f19e394446a2"
+    arm64.url = "https://github.com/denoland/deno/releases/download/v2.9.1/deno-aarch64-unknown-linux-gnu.zip"
+    arm64.sha256 = "0a60d079fa79635a59803074dbbfe86ccc35746dc2c4f8d73f2e50338b3283a9"
+    in_subdir = false
+
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset.amd64 = "deno-x86_64-unknown-linux-gnu.zip"
+    autoupdate.asset.arm64 = "deno-aarch64-unknown-linux-gnu.zip"
+
     [resources.system_user]
 
     [resources.install_dir]
