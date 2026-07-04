@@ -1,0 +1,55 @@
+--- a/server/modules/filesystem/fileOperations.js
++++ b/server/modules/filesystem/fileOperations.js
+@@ -5,6 +5,9 @@
+ 
+ const fs = require('fs-extra');
+ const fsPromises = require('fs').promises;
++const { execFile } = require('child_process');
++const { promisify } = require('util');
++const execFileAsync = promisify(execFile);
+ const logger = require('../../logger');
+ 
+ /**
+@@ -17,6 +20,26 @@
+ }
+ 
+ /**
++ * Some FUSE-backed filesystems (e.g. rclone mounts) return EPERM instead of
++ * EXDEV/EOPNOTSUPP when Node's copy_file_range-based fs.copyFile is used for
++ * a cross-device copy, and fs-extra doesn't fall back to a plain read/write
++ * copy in that case. The system 'cp' binary handles this correctly, so shell
++ * out to it as a last resort.
++ *
++ * @param {string} src - Source path
++ * @param {string} dest - Destination path
++ * @param {boolean} overwrite - Whether to overwrite an existing destination
++ * @returns {Promise<void>}
++ */
++async function moveViaCpFallback(src, dest, overwrite) {
++  if (overwrite) {
++    await fs.remove(dest);
++  }
++  await execFileAsync('cp', ['-a', '--', src, dest]);
++  await fs.remove(src);
++}
++
++/**
+  * Move a file or directory with exponential backoff retries
+  * Handles transient filesystem errors that can occur during cross-device moves
+  *
+@@ -35,6 +58,15 @@
+       await fs.move(src, dest, { overwrite });
+       return;
+     } catch (err) {
++      if (err && err.code === 'EPERM' && err.syscall === 'copyfile') {
++        try {
++          await moveViaCpFallback(src, dest, overwrite);
++          logger.debug({ src, dest }, 'Move succeeded via cp fallback after EPERM from fs.move');
++          return;
++        } catch (fallbackErr) {
++          logger.debug({ src, dest, fallbackErr }, 'cp fallback for cross-device move also failed');
++        }
++      }
+       if (attempt === retries) {
+         throw err;
+       }
