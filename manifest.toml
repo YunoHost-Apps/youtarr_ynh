@@ -93,4 +93,6 @@ ram.runtime = "512M"
     type = "mysql"
 
     [resources.nodejs]
-    version = "20"
+    # Youtarr's package.json enforces engine-strict npm >=11.10.0 (bundled with
+    # node 20/22's default npm is too old); node 24 ships a recent enough npm.
+    version = "24"

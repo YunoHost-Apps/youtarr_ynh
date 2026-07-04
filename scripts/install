@@ -45,12 +45,12 @@ chmod +x "$install_dir/bin/apprise"
 ynh_script_progression "Building Youtarr... This may take a while"
 
 pushd "$install_dir"
-    ynh_hide_warnings ynh_exec_as_app npx --yes npm@11.15.0 ci --omit=dev --ignore-scripts
+    ynh_hide_warnings ynh_exec_as_app npm ci --omit=dev --ignore-scripts
 popd
 
 pushd "$install_dir/client"
-    ynh_hide_warnings ynh_exec_as_app npx --yes npm@11.15.0 ci --ignore-scripts
-    ynh_hide_warnings ynh_exec_as_app npx --yes npm@11.15.0 run build
+    ynh_hide_warnings ynh_exec_as_app npm ci --ignore-scripts
+    ynh_hide_warnings ynh_exec_as_app npm run build
     ynh_safe_rm node_modules
 popd
 
