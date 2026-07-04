@@ -92,6 +92,19 @@ ynh_script_progression "Starting $app's systemd service..."
 ynh_systemctl --service="$app" --action="start" --log_path="/var/log/$app/$app.log" --wait_until="Server started and listening"
 
 #=================================================
+# STOP FORCING THE INITIAL CREDENTIALS
+#=================================================
+# AUTH_PRESET_USERNAME/PASSWORD re-apply (and override) the admin credentials
+# on every single startup. They're only meant to seed the account on first
+# boot: strip them now so the admin can actually change their password later
+# from Youtarr's own UI without it getting reset on the next restart/upgrade.
+ynh_script_progression "Finalizing authentication setup..."
+
+ynh_replace --match="^AUTH_PRESET_USERNAME=.*" --replace="AUTH_PRESET_USERNAME=" --file="$install_dir/.env"
+ynh_replace --match="^AUTH_PRESET_PASSWORD=.*" --replace="AUTH_PRESET_PASSWORD=" --file="$install_dir/.env"
+ynh_systemctl --service="$app" --action="restart" --log_path="/var/log/$app/$app.log" --wait_until="Server started and listening"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
