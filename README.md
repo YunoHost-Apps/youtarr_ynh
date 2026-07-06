@@ -10,7 +10,6 @@ It shall NOT be edited by hand.
 
 Automatically download and organize YouTube channels and playlists for Plex, Jellyfin, Emby and Kodi
 
-[![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://github.com/DialmasterOrg/Youtarr)
 [![Version: 1.72.1~ynh1](https://img.shields.io/badge/Version-1.72.1~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/youtarr/)
 
 <div align="center">
