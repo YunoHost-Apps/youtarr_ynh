@@ -100,7 +100,7 @@ ram.runtime = "512M"
     main.default = 3011
 
     [resources.apt]
-    packages = "ffmpeg, atomicparsley, python3, python3-venv"
+    packages = "mariadb-server, ffmpeg, atomicparsley, python3, python3-venv"
 
     [resources.database]
     type = "mysql"
