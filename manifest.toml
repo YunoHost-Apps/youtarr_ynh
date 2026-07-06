@@ -13,7 +13,6 @@ maintainers = ["bowgartfield"]
 
 [upstream]
 license = "ISC"
-website = "https://github.com/DialmasterOrg/Youtarr"
 admindoc = "https://github.com/DialmasterOrg/Youtarr/tree/main/docs"
 userdoc = "https://github.com/DialmasterOrg/Youtarr#readme"
 code = "https://github.com/DialmasterOrg/Youtarr"
