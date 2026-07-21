@@ -7,7 +7,7 @@ name = "Youtarr"
 description.en = "Automatically download and organize YouTube channels and playlists for Plex, Jellyfin, Emby and Kodi"
 description.fr = "Télécharge et organise automatiquement des chaînes et playlists YouTube pour Plex, Jellyfin, Emby et Kodi"
 
-version = "1.72.1~ynh1"
+version = "1.72.1~ynh2"
 
 maintainers = ["bowgartfield"]
 
