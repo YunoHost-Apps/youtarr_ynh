@@ -58,7 +58,7 @@ ram.runtime = "512M"
     [resources.sources.main]
     url = "https://github.com/DialmasterOrg/Youtarr/archive/refs/tags/v1.76.1.tar.gz"
     sha256 = "1ff3b97fb1122f240deaf8febfb7c7c0d56b1e76133a038e90ab95e1c71377c4"
-    autoupdate.strategy = "latest_github_release"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.sources.yt-dlp]
     amd64.url = "https://github.com/yt-dlp/yt-dlp/releases/download/2026.06.09/yt-dlp_linux"
