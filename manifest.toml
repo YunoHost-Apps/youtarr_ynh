@@ -7,7 +7,7 @@ name = "Youtarr"
 description.en = "Automatically download and organize YouTube channels and playlists for Plex, Jellyfin, Emby and Kodi"
 description.fr = "Télécharge et organise automatiquement des chaînes et playlists YouTube pour Plex, Jellyfin, Emby et Kodi"
 
-version = "1.76.1~ynh1"
+version = "1.78.0~ynh1"
 
 maintainers = ["bowgartfield"]
 
@@ -56,35 +56,37 @@ ram.runtime = "512M"
 [resources]
 
     [resources.sources.main]
-    url = "https://github.com/DialmasterOrg/Youtarr/archive/refs/tags/v1.76.1.tar.gz"
-    sha256 = "1ff3b97fb1122f240deaf8febfb7c7c0d56b1e76133a038e90ab95e1c71377c4"
+    url = "https://github.com/DialmasterOrg/Youtarr/archive/refs/tags/v1.78.0.tar.gz"
+    sha256 = "afdf3c94bf5a377ba6afaa85a0a1097c5cb1a4a188680754caedeeac6715dcc5"
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.yt-dlp]
-    amd64.url = "https://github.com/yt-dlp/yt-dlp/releases/download/2026.06.09/yt-dlp_linux"
-    amd64.sha256 = "bf8aac79b72287a6d2043074415132558b43743a8f9461a22b0141e90f16ce66"
-    arm64.url = "https://github.com/yt-dlp/yt-dlp/releases/download/2026.06.09/yt-dlp_linux_aarch64"
-    arm64.sha256 = "cabd246445bdfde0eda0dfe68bbe90354be83f3fdbbf077df11a2ea55f41cdbd"
+    amd64.url = "https://github.com/yt-dlp/yt-dlp/releases/download/2026.07.04/yt-dlp_linux"
+    amd64.sha256 = "6bbb3d314cde4febe36e5fa1d55462e29c974f63444e707871834f6d8cc210ae"
+    arm64.url = "https://github.com/yt-dlp/yt-dlp/releases/download/2026.07.04/yt-dlp_linux_aarch64"
+    arm64.sha256 = "b6ce97646773070d7a7ffd6bbbdcaecb47c48483909c54c915bf08a7a9b5e0b1"
     format = "whatever"
     extract = false
     rename = "yt-dlp"
 
     autoupdate.strategy = "latest_github_release"
-    autoupdate.asset.amd64 = "yt-dlp_linux"
-    autoupdate.asset.arm64 = "yt-dlp_linux_aarch64"
+    autoupdate.upstream = "https://github.com/yt-dlp/yt-dlp"
+    autoupdate.asset.amd64 = "yt-dlp_linux$"
+    autoupdate.asset.arm64 = "yt-dlp_linux_aarch64$"
 
     [resources.sources.deno]
     # yt-dlp needs a JS runtime on PATH to solve YouTube's "n" challenge,
     # otherwise most video formats silently disappear (only images left).
-    amd64.url = "https://github.com/denoland/deno/releases/download/v2.9.1/deno-x86_64-unknown-linux-gnu.zip"
-    amd64.sha256 = "710c54d63477d1100844ef4818f19507ce0dbf40510903b1d883f19e394446a2"
-    arm64.url = "https://github.com/denoland/deno/releases/download/v2.9.1/deno-aarch64-unknown-linux-gnu.zip"
-    arm64.sha256 = "0a60d079fa79635a59803074dbbfe86ccc35746dc2c4f8d73f2e50338b3283a9"
+    amd64.url = "https://github.com/denoland/deno/releases/download/v2.9.5/deno-x86_64-unknown-linux-gnu.zip"
+    amd64.sha256 = "8b010a3b1a4a0188a67cdb8a7a27348b2a501af78aec7fc74f2ace167368d530"
+    arm64.url = "https://github.com/denoland/deno/releases/download/v2.9.5/deno-aarch64-unknown-linux-gnu.zip"
+    arm64.sha256 = "6b7cae3a8fc4385a59dea3146fcb8bad7fea4230e0ad36a8c692afacbc254be0"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
-    autoupdate.asset.amd64 = "deno-x86_64-unknown-linux-gnu.zip"
-    autoupdate.asset.arm64 = "deno-aarch64-unknown-linux-gnu.zip"
+    autoupdate.upstream = "https://github.com/denoland/deno"
+    autoupdate.asset.amd64 = "deno-x86_64-unknown-linux-gnu.zip$"
+    autoupdate.asset.arm64 = "deno-aarch64-unknown-linux-gnu.zip$"
 
     [resources.system_user]
 
