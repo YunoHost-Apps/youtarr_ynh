@@ -19,7 +19,7 @@ code = "https://github.com/DialmasterOrg/Youtarr"
 fund = "https://www.patreon.com/c/ChrisDial"
 
 [integration]
-yunohost = ">= 12.1.17"
+yunohost = ">= 12.1.40"
 helpers_version = "2.1"
 architectures = ["amd64", "arm64"]
 multi_instance = true
@@ -98,7 +98,7 @@ ram.runtime = "512M"
     main.url = "/"
 
     [resources.ports]
-    main.default = 3011
+    #main.default = 3011
 
     [resources.apt]
     packages = "mariadb-server, ffmpeg, atomicparsley, python3, python3-venv"

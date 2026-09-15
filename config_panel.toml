@@ -12,9 +12,9 @@ services = ["__APP__"]
     name.fr = "Emplacement des téléchargements"
 
         [main.storage.data_path]
-        ask.en = "Directory where downloaded videos are stored"
-        ask.fr = "Répertoire où sont stockées les vidéos téléchargées"
+        ask.en = "Download location"
+        ask.fr = "Emplacement des téléchargements"
         type = "path"
         bind = "DATA_PATH:/var/www/__APP__/.env"
-        help.en = "Defaults to this app's own data directory. Can be pointed at external storage (e.g. a media server library) instead, but the 'youtarr' system user must have read/write access to that path first (for example by adding it to the group that owns the target directory)."
-        help.fr = "Par défaut, le répertoire de données de l'app. Peut pointer vers un stockage externe (ex. bibliothèque d'un serveur média), mais l'utilisateur système 'youtarr' doit d'abord avoir un accès en lecture/écriture à ce chemin (par exemple en l'ajoutant au groupe propriétaire du répertoire cible)."
+        help.en = "Directory where downloaded videos are stored. Defaults to this app's own data directory. Can be pointed at external storage (e.g. a media server library) instead, but the 'youtarr' system user must have read/write access to that path first (for example by adding it to the group that owns the target directory)."
+        help.fr = "Répertoire où sont stockées les vidéos téléchargées. Par défaut, le répertoire de données de l'app. Peut pointer vers un stockage externe (ex. bibliothèque d'un serveur média), mais l'utilisateur système 'youtarr' doit d'abord avoir un accès en lecture/écriture à ce chemin (par exemple en l'ajoutant au groupe propriétaire du répertoire cible)."
