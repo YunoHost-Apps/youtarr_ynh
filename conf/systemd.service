@@ -1,5 +1,5 @@
 [Unit]
-Description=Youtarr - automated YouTube channel/playlist downloader
+Description=Youtarr: automated YouTube channel/playlist downloader
 Wants=network-online.target
 After=network-online.target mariadb.service
 
