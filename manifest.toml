@@ -7,7 +7,7 @@ name = "Youtarr"
 description.en = "Automatically download and organize YouTube channels and playlists for Plex, Jellyfin, Emby and Kodi"
 description.fr = "Télécharge et organise automatiquement des chaînes et playlists YouTube pour Plex, Jellyfin, Emby et Kodi"
 
-version = "1.83.1~ynh1"
+version = "1.83.1~ynh2"
 
 maintainers = ["bowgartfield"]
 
@@ -77,10 +77,10 @@ ram.runtime = "512M"
     [resources.sources.deno]
     # yt-dlp needs a JS runtime on PATH to solve YouTube's "n" challenge,
     # otherwise most video formats silently disappear (only images left).
-    amd64.url = "https://github.com/denoland/deno/releases/download/v2.9.6/deno-x86_64-unknown-linux-gnu.zip"
-    amd64.sha256 = "394f07f4da2bebe6ce6f1e7ce0fa16429b29b08c35e3fac3fe25972676dff4b2"
-    arm64.url = "https://github.com/denoland/deno/releases/download/v2.9.6/deno-aarch64-unknown-linux-gnu.zip"
-    arm64.sha256 = "9a46afc6c392c7cd2ff71a31558935545b46408d0e87f7a86908c712721c046e"
+    amd64.url = "https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-unknown-linux-gnu.zip"
+    amd64.sha256 = "c6527f24f4b16031d3ae4fa9f658d5f11534c8d84ce7dc8502420280919c3490"
+    arm64.url = "https://github.com/denoland/deno/releases/download/v2.9.7/deno-aarch64-unknown-linux-gnu.zip"
+    arm64.sha256 = "c832298b1ad4422481334855f6003e0f54145762c5a134f20a489511d2f65bbf"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
