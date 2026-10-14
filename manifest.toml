@@ -7,7 +7,7 @@ name = "Youtarr"
 description.en = "Automatically download and organize YouTube channels and playlists for Plex, Jellyfin, Emby and Kodi"
 description.fr = "Télécharge et organise automatiquement des chaînes et playlists YouTube pour Plex, Jellyfin, Emby et Kodi"
 
-version = "1.87.1~ynh1"
+version = "1.88.0~ynh1"
 
 maintainers = ["bowgartfield"]
 
@@ -56,8 +56,8 @@ ram.runtime = "512M"
 [resources]
 
     [resources.sources.main]
-    url = "https://github.com/DialmasterOrg/Youtarr/archive/refs/tags/v1.87.1.tar.gz"
-    sha256 = "7e9a937a4233f0aa44c8c2e373ef04f5e75d1057535a71254dd9797ce485f060"
+    url = "https://github.com/DialmasterOrg/Youtarr/archive/refs/tags/v1.88.0.tar.gz"
+    sha256 = "3ee8062b3a12476fbf2e004c3fd93758f0e53e395f536ac15e6a5a3da3123afd"
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.yt-dlp]
